@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Moonlit - Book Assistant</title>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to bottom, #0f172a, #020617);
+      color: #f1f5f9;
+      overflow-x: hidden;
+    }
+
+    .moon {
+      position: absolute;
+      top: 80px;
+      right: 80px;
+      width: 120px;
+      height: 120px;
+      background: radial-gradient(circle, #fff, #e0e7ff 60%, transparent 70%);
+      border-radius: 50%;
+      box-shadow: 0 0 40px #c7d2fe, 0 0 80px #818cf8;
+      animation: glow 3s ease-in-out infinite alternate;
+    }
+
+    @keyframes glow {
+      from { box-shadow: 0 0 20px #c7d2fe, 0 0 40px #818cf8; }
+      to { box-shadow: 0 0 60px #e0e7ff, 0 0 120px #6366f1; }
+    }
+
+    .hero {
+      text-align: center;
+      padding: 120px 20px;
+    }
+
+    .hero h1 {
+      font-size: 3rem;
+      color: #e0e7ff;
+      animation: fadeUp 1.5s ease;
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      max-width: 600px;
+      margin: auto;
+      color: #cbd5f5;
+      animation: fadeUp 2s ease;
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .btn {
+      margin-top: 30px;
+      padding: 12px 25px;
+      border: none;
+      background: #6366f1;
+      color: white;
+      font-size: 1rem;
+      border-radius: 25px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .btn:hover {
+      background: #4f46e5;
+      transform: scale(1.05);
+    }
+  </style>
+</head>
+<body>
+
+<div class="moon"></div>
+
+<section class="hero">
+  <h1>🌙 Moonlit Book Assistant</h1>
+  <p>Ask anything about books — summaries, recommendations, or meanings. Your AI reading companion is here.</p>
+  <button class="btn">Start Exploring</button>
+</section>
+
+<!-- Watson Assistant Chatbot -->
+<script>
+  window.watsonAssistantChatOptions = {
+    integrationID: "22637698-a215-454b-8e44-2f3900a76579",
+    region: "eu-de",
+    serviceInstanceID: "07759be1-4cde-4477-8582-0f1ddeaba834",
+    onLoad: async (instance) => { await instance.render(); }
+  };
+  setTimeout(function(){
+    const t=document.createElement('script');
+    t.src="https://web-chat.global.assistant.watson.appdomain.cloud/versions/" + (window.watsonAssistantChatOptions.clientVersion || 'latest') + "/WatsonAssistantChatEntry.js";
+    document.head.appendChild(t);
+  });
+</script>
+
+</body>
+</html>
